@@ -1,0 +1,225 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* Space background with stars */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, #ddd, transparent),
+                radial-gradient(1px 1px at 200px 90px, #fff, transparent),
+                radial-gradient(2px 2px at 240px 50px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 280px 10px, #eee, transparent),
+                radial-gradient(1px 1px at 320px 70px, #fff, transparent),
+                radial-gradient(2px 2px at 360px 40px, rgba(255,255,255,0.9), transparent);
+            background-repeat: repeat;
+            background-size: 400px 200px;
+            animation: sparkle 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes sparkle {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-200px); }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: float linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0% { 
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Glowing orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+            animation: drift linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes drift {
+            0% { transform: translateX(-100px) translateY(0) scale(0.5); }
+            50% { transform: translateX(50vw) translateY(-50px) scale(1); }
+            100% { transform: translateX(100vw) translateY(0) scale(0.5); }
+        }
+
+        /* Main content */
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #fff, #667eea, #764ba2);
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGlow 3s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes textGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        button {
+            font-size: 1.5rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 20px rgba(102, 126, 234, 0.3),
+                0 0 40px rgba(118, 75, 162, 0.2);
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 30px rgba(102, 126, 234, 0.5),
+                0 0 60px rgba(118, 75, 162, 0.3);
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:active {
+            transform: translateY(-1px);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #fff;
+            opacity: 0.85;
+            letter-spacing: 1.5px;
+        }
+        .portfolio-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .portfolio-links a {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.07);
+            box-shadow: 0 2px 12px 0 rgba(255,255,255,0.05);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .portfolio-links a:hover {
+            background: rgba(255,255,255,0.18);
+            transform: scale(1.08) translateY(-2px);
+        }
+        .portfolio-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 4px 32px 0 rgba(255,255,255,0.07);
+            padding: 1.5rem 1.2rem;
+            min-width: 220px;
+            max-width: 260px;
+            color: #fff;
+            text-align: left;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1.5px solid rgba(255,255,255,0.10);
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 8px 40px 0 #fffbe044;
+            background: rgba(255,255,255,0.13);
+        }
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.7rem;
+            color: #fffbe0;
+        }
+        .card p {
+            font-size: 1rem;
+            color: #eee;
+            opacity: 0.9;
+        }
+        @media (max-width: 900px) {
+            .portfolio-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }

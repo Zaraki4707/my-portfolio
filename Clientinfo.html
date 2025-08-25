@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Login</title>
+    <link rel="stylesheet" href="./styleOfClientPart.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap">
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <div class="form-box">
+            <h2>Client's info</h2>
+            <p>Welcome dear client, you've chosen the right place to make your ideas digital</p>
+
+            <form>
+                <div class="input-group">
+                    <input type="text" id="username" required class="input-field">
+                    <label for="username">Full Name</label>
+                    <div class="glow-line"></div>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" required class="input-field">
+                    <label for="email">Email</label>
+                    <div class="glow-line"></div>
+                </div>
+                <div class="input-group">
+                    <input type="tel" id="phoneNum" required class="input-field">
+                    <label for="phoneNum">Phone Number</label>
+                    <div class="glow-line"></div>
+                </div>
+                <div class="input-group">
+                    <select id="service" required class="input-field">
+                        <option value="" disabled selected></option>
+                        <option value="graphic-design">Graphic Design</option>
+                        <option value="ui-ux">UI/UX Design</option>
+                        <option value="web-dev">Web Development</option>
+                    </select>
+                    <label for="service">Service wanted</label>
+                    <div class="glow-line"></div>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="ProjName" required class="input-field">
+                    <label for="ProjName">Project Name</label>
+                    <div class="glow-line"></div>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="budget" required class="input-field">
+                    <label for="budget">Your budget interval</label>
+                    <div class="glow-line"></div>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="intro" required class="input-field">
+                    <label for="intro">Quick intro about your project idea</label>
+                    <div class="glow-line"></div>
+                </div>
+
+                <a href="./thankSubmit.html" class="login-btn">
+                    <button type="submit" class="login-btn">
+                        <span>Submit</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </a>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 120,
+                        "density": {
+                            "enable": true,
+                            "value_area": 900
+                        }
+                    },
+                    "color": {
+                        "value": ["#ffffff", "#667eea", "#764ba2"] // cosmic palette
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.8,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.3,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 4,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 2,
+                            "size_min": 1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#667eea", // match gradient tone
+                        "opacity": 0.5,
+                        "width": 1.2
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": true,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "repulse"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 400,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 35,
+                            "duration": 2,
+                            "opacity": 0.8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 120,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        });
+    </script>
+
+</body>
+
+</html>
