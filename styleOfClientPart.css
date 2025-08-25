@@ -96,18 +96,34 @@ p {
     width: 100%;
     padding: 12px 0;
     font-size: 15px;
-    color: #fff;
-    background: transparent;
+    color: #fff !important;
+    background: transparent !important;
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     outline: none;
     transition: 0.3s;
     z-index: 1;
     position: relative;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .input-field:focus {
     border-bottom-color: transparent;
+    background: transparent !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.input-field:valid {
+    background: transparent !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.input-field:not(:placeholder-shown) {
+    background: transparent !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .glow-line {
@@ -161,8 +177,8 @@ select.input-field {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: transparent;
-    color: #fff;
+    background: transparent !important;
+    color: #fff !important;
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     padding: 12px 0;
@@ -171,6 +187,13 @@ select.input-field {
     outline: none;
     width: 100%;
     transition: 0.3s;
+    -webkit-text-fill-color: #fff !important;
+}
+
+select.input-field:focus {
+    background: transparent !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 /* Custom arrow */
@@ -181,12 +204,14 @@ select.input-field {
     background-size: 12px 12px;
     background-repeat: no-repeat;
     padding-right: 2rem;
+    background-color: transparent !important;
 }
 
 /* Dropdown options */
 select.input-field option {
-    background: #0a0a0a; /* Dark like card */
-    color: #fff;
+    background: #0a0a0a !important;
+    background-color: #0a0a0a !important;
+    color: #fff !important;
     padding: 10px;
 }
 
@@ -248,4 +273,35 @@ select.input-field option {
 
 .login-btn:active {
     transform: translateZ(20px) scale(0.98);
+}
+
+/* Fix autofill styling - IMPORTANT: Keep this at the bottom */
+.input-field:-webkit-autofill,
+.input-field:-webkit-autofill:hover,
+.input-field:-webkit-autofill:focus,
+.input-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    -webkit-text-fill-color: #fff !important;
+    background-color: transparent !important;
+    background: transparent !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+    color: #fff !important;
+}
+
+/* Firefox autofill fix */
+.input-field:-moz-autofill {
+    background: transparent !important;
+    color: #fff !important;
+}
+
+/* Edge autofill fix */
+.input-field:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+    background: transparent !important;
+}
+
+/* Modern browsers placeholder */
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+    background: transparent !important;
 }
