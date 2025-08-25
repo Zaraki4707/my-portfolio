@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1756138367848,
+    "username": "zakaria",
+    "email": "zakariabdn7@gmail.com",
+    "phoneNum": "0540966397",
+    "service": "ui-ux",
+    "projectName": "novo",
+    "budget": "150000",
+    "intro": "it's just a test ",
+    "submitted_at": "2025-08-25T16:12:47.848Z"
+  },
+  {
+    "id": 1756138431907,
+    "username": "zakaria",
+    "email": "zakariabdn7@gmail.com",
+    "phoneNum": "0540966397",
+    "service": "ui-ux",
+    "projectName": "novo",
+    "budget": "150000",
+    "intro": "it's just a test ",
+    "submitted_at": "2025-08-25T16:13:51.907Z"
+  },
+  {
+    "id": 1756138566274,
+    "username": "zakaria mekki ",
+    "email": "zakaria-abdenour.mekki@ensia.edu.dz",
+    "phoneNum": "0540966397",
+    "service": "web-dev",
+    "projectName": "novo",
+    "budget": "150000",
+    "intro": "it's just a test ",
+    "submitted_at": "2025-08-25T16:16:06.275Z"
+  }
+]

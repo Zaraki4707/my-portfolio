@@ -18,56 +18,61 @@
             <h2>Client's info</h2>
             <p>Welcome dear client, you've chosen the right place to make your ideas digital</p>
 
-            <form>
-                <div class="input-group">
-                    <input type="text" id="username" required class="input-field">
-                    <label for="username">Full Name</label>
-                    <div class="glow-line"></div>
-                </div>
-                <div class="input-group">
-                    <input type="email" id="email" required class="input-field">
-                    <label for="email">Email</label>
-                    <div class="glow-line"></div>
-                </div>
-                <div class="input-group">
-                    <input type="tel" id="phoneNum" required class="input-field">
-                    <label for="phoneNum">Phone Number</label>
-                    <div class="glow-line"></div>
-                </div>
-                <div class="input-group">
-                    <select id="service" required class="input-field">
-                        <option value="" disabled selected></option>
-                        <option value="graphic-design">Graphic Design</option>
-                        <option value="ui-ux">UI/UX Design</option>
-                        <option value="web-dev">Web Development</option>
-                    </select>
-                    <label for="service">Service wanted</label>
-                    <div class="glow-line"></div>
-                </div>
+            <form action="/submit" method="POST">
+    <div class="input-group">
+        <input type="text" id="username" name="username" required class="input-field">
+        <label for="username">Full Name</label>
+        <div class="glow-line"></div>
+    </div>
 
-                <div class="input-group">
-                    <input type="text" id="ProjName" required class="input-field">
-                    <label for="ProjName">Project Name</label>
-                    <div class="glow-line"></div>
-                </div>
-                <div class="input-group">
-                    <input type="text" id="budget" required class="input-field">
-                    <label for="budget">Your budget interval</label>
-                    <div class="glow-line"></div>
-                </div>
-                <div class="input-group">
-                    <input type="text" id="intro" required class="input-field">
-                    <label for="intro">Quick intro about your project idea</label>
-                    <div class="glow-line"></div>
-                </div>
+    <div class="input-group">
+        <input type="email" id="email" name="email" required class="input-field">
+        <label for="email">Email</label>
+        <div class="glow-line"></div>
+    </div>
 
-                <a href="./thankSubmit.html" class="login-btn">
-                    <button type="submit" class="login-btn">
-                        <span>Submit</span>
-                        <div class="btn-glow"></div>
-                    </button>
-                </a>
-            </form>
+    <div class="input-group">
+        <input type="tel" id="phoneNum" name="phoneNum" required class="input-field">
+        <label for="phoneNum">Phone Number</label>
+        <div class="glow-line"></div>
+    </div>
+
+    <div class="input-group">
+        <select id="service" name="service" required class="input-field">
+            <option value="" disabled selected></option>
+            <option value="graphic-design">Graphic Design</option>
+            <option value="ui-ux">UI/UX Design</option>
+            <option value="web-dev">Web Development</option>
+        </select>
+        <label for="service">Service wanted</label>
+        <div class="glow-line"></div>
+    </div>
+
+    <div class="input-group">
+        <input type="text" id="ProjName" name="projectName" required class="input-field">
+        <label for="ProjName">Project Name</label>
+        <div class="glow-line"></div>
+    </div>
+
+    <div class="input-group">
+        <input type="text" id="budget" name="budget" required class="input-field">
+        <label for="budget">Your budget interval</label>
+        <div class="glow-line"></div>
+    </div>
+
+    <div class="input-group">
+        <input type="text" id="intro" name="intro" required class="input-field">
+        <label for="intro">Quick intro about your project idea</label>
+        <div class="glow-line"></div>
+    </div>
+
+    <button type="submit" class="login-btn">
+        <span>Submit</span>
+        <div class="btn-glow"></div>
+    </button>
+</form>
+
+
         </div>
     </div>
 
