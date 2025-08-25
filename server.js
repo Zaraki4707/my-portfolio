@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '..'))); // Serve files from parent directory
+app.use(express.static('.')); // Serve files from current directory
 
 // Redirect root to landing page
 app.get('/', (req, res) => {

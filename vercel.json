@@ -2,26 +2,26 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/server.js",
+      "src": "server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/submit",
-      "dest": "/api/server.js"
+      "dest": "/server.js"
     },
     {
-      "src": "/clients",
-      "dest": "/api/server.js"
+      "src": "/clients", 
+      "dest": "/server.js"
     },
     {
       "src": "/",
-      "dest": "/api/server.js"
+      "dest": "/server.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/api/server.js"
+      "src": "/(.*\\.(html|css|js|png|jpg|jpeg|gif|svg|ico))",
+      "dest": "/$1"
     }
   ]
 }
