@@ -11,7 +11,7 @@ app.use(express.static('.')); // Serve files from current directory
 
 // Redirect root to landing page
 app.get('/', (req, res) => {
-    res.redirect('/landingpage.html');
+    res.redirect('/index.html');
 });
 
 // Handle form submission
