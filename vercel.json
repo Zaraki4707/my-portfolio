@@ -1,27 +1,14 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
+  "functions": {
+    "server.js": {
+      "runtime": "@vercel/node@18"
     }
-  ],
+  },
   "routes": [
     {
-      "src": "/submit",
+      "src": "/(.*)",
       "dest": "/server.js"
-    },
-    {
-      "src": "/clients", 
-      "dest": "/server.js"
-    },
-    {
-      "src": "/",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/(.*\\.(html|css|js|png|jpg|jpeg|gif|svg|ico))",
-      "dest": "/$1"
     }
   ]
 }
