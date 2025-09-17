@@ -282,7 +282,7 @@
     margin-bottom: 1rem;
 }
 
-/* Responsive design for about section */
+/* about section */
 @media (max-width: 768px) {
     .about-section {
         flex-direction: column;
@@ -291,7 +291,7 @@
     }
 
     .about-image {
-        width: 250px;
+        width: 350px;
         height: 250px;
     }
 
@@ -312,5 +312,49 @@
 
     .about-text p {
         font-size: 1rem;
+    }
+}
+
+/*return to about section */ 
+/* Animation styles for sections - only on desktop */
+@media (min-width: 769px) {
+    
+    /* Left to right animations (myintro, competitions, Hobbies) */
+    #myintro, #competitions, #Hobbies {
+        opacity: 0;
+        transform: translateX(-100px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    #myintro.animate, #competitions.animate, #Hobbies.animate {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Right to left animations (Contributions, exp) */
+    #Contributions, #exp {
+        opacity: 0;
+        transform: translateX(100px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    #Contributions.animate, #exp.animate {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Stagger animation delays for smoother effect */
+    #myintro { transition-delay: 0.1s; }
+    #Contributions { transition-delay: 0.2s; }
+    #competitions { transition-delay: 0.3s; }
+    #exp { transition-delay: 0.4s; }
+    #Hobbies { transition-delay: 0.5s; }
+}
+
+/* On mobile - no animations, keep sections visible */
+@media (max-width: 768px) {
+    #myintro, #competitions, #Hobbies, #Contributions, #exp {
+        opacity: 1;
+        transform: none;
     }
 }
