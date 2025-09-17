@@ -201,3 +201,45 @@
                 setTimeout(() => particle.remove(), 1000);
             }
         });
+// Scroll animation observer
+function initScrollAnimations() {
+    // Only run animations on desktop (screen width > 768px)
+    if (window.innerWidth <= 768) {
+        return;
+    }
+
+    const animatedSections = document.querySelectorAll('#myintro, #Contributions, #competitions, #exp, #Hobbies');
+
+    const observerOptions = {
+        threshold: 0.3, // Trigger when 30% of element is visible
+        rootMargin: '0px 0px -100px 0px' // Trigger slightly before element comes into view
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all animated sections
+    animatedSections.forEach(section => {
+        observer.observe(section);
+    });
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', initScrollAnimations);
+
+// Re-initialize on window resize (in case user switches between mobile/desktop)
+window.addEventListener('resize', () => {
+    // Remove existing animations
+    const animatedSections = document.querySelectorAll('#myintro, #Contributions, #competitions, #exp, #Hobbies');
+    animatedSections.forEach(section => {
+        section.classList.remove('animate');
+    });
+    
+    // Re-initialize
+    setTimeout(initScrollAnimations, 100);
+});
