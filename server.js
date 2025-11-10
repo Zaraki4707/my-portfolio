@@ -1,4 +1,4 @@
-/*const express = require('express');
+const express = require('express');
 const fs = require('fs');
 const path = require('path');
 
@@ -83,9 +83,9 @@ app.listen(PORT, () => {
     console.log(`📝 Client data will be saved to clients.json`);
 });
 
-module.exports = app;*/
+module.exports = app;
 
-const express = require('express');
+/*const express = require('express');
 const nodemailer = require('nodemailer');
 
 const app = express();
