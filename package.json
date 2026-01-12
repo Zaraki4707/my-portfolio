@@ -20,11 +20,13 @@
   "homepage": "https://github.com/Zaraki4707/my-portfolio#readme",
   "description": "My portfolio website with client form backend",
   "dependencies": {
+    "@supabase/supabase-js": "^2.90.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "express-rate-limit": "^8.2.1",
     "helmet": "^8.1.0",
-    "nodemailer": "^7.0.12"
+    "nodemailer": "^7.0.12",
+    "pg": "^8.16.3"
   }
 }

@@ -23,7 +23,7 @@
 
             <form id="inquiryForm">
     <div class="input-group">
-        <input type="text" id="clientName" name="username" required class="input-field">
+        <input type="text" id="clientName" name="username" required minlength="2" class="input-field">
         <label for="clientName">Full Name</label>
         <div class="glow-line"></div>
     </div>
@@ -54,7 +54,7 @@
     </div>
 
     <div class="input-group">
-        <input type="text" id="clientProject" name="projectName" required class="input-field">
+        <input type="text" id="clientProject" name="projectName" required minlength="2" class="input-field">
         <label for="clientProject">Project Name</label>
         <div class="glow-line"></div>
     </div>
@@ -66,7 +66,7 @@
     </div>
 
     <div class="input-group">
-        <input type="text" id="clientMessage" name="intro" required class="input-field">
+        <input type="text" id="clientMessage" name="intro" required minlength="10" class="input-field">
         <label for="clientMessage">Quick intro about your project idea</label>
         <div class="glow-line"></div>
     </div>
@@ -221,9 +221,15 @@
                     form.reset();
                     window.location.href = 'thankSubmit.html';
                 } else {
-                    alert('Server error, please try again.');
+                    const errorData = await response.json();
+                    if (errorData.errors) {
+                        alert('Validation Error: ' + errorData.errors.join('\n'));
+                    } else {
+                        alert(errorData.message || 'Server error, please try again.');
+                    }
                 }
             } catch (err) {
+                console.error("Submission error:", err);
                 alert('Could not connect to the server.');
             }
         });
