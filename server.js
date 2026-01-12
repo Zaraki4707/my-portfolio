@@ -109,9 +109,9 @@ app.post('/send-inquiry', inquiryLimiter, async (req, res) => {
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER,
         replyTo: email,
-        subject: `Portfolio Inquiry from ${name}`,
-        text: `New message from your portfolio:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phoneNum}\nService: ${service}\nProject: ${projectName}\nBudget: ${budget}\n\nMessage:\n${message}`
-      };
+        subject: `🚀 New Project Inquiry: ${projectName}`,
+        html: `
+          
     
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
@@ -124,8 +124,59 @@ app.post('/send-inquiry', inquiryLimiter, async (req, res) => {
         const confirmationOptions = {
           from: process.env.EMAIL_USER,
           to: email,
-          subject: "Message Received - Portfolio Inquiry",
-          text: `Hi ${name},\n\nThank you for reaching out! I've received your request regarding "${projectName}".\n\nI'll be responding to your inquiry soon. If you don't hear from me within 24-48 hours, please feel free to reach out again.\n\nBest regards,\nYour Portfolio Team`
+          subject: "Inquiry Received - Zakaria's Portfolio",
+          html: `
+            <div style="background-color: #0a0a0a; background-image: radial-gradient(1px 1px at 20px 30px, #eee, transparent), radial-gradient(1px 1px at 40px 70px, #fff, transparent), radial-gradient(1px 1px at 90px 40px, #fff, transparent); background-size: 200px 200px; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 0; margin: 0; width: 100%;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td align="center" style="padding: 40px 20px;">
+                    <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="background-color: rgba(17, 17, 17, 0.9); border-radius: 12px; border: 1px solid #333; overflow: hidden; box-shadow: 0 0 20px rgba(0, 210, 255, 0.1);">
+                      <tr>
+                        <td align="center" style="padding: 30px; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); border-bottom: 2px solid #00d2ff;">
+                           <img src="cid:portfolioLogo" alt="Logo" style="width: 70px; height: 70px; margin-bottom: 15px; border-radius: 50%; border: 2px solid #00d2ff;">
+                           <h1 style="color: #ffffff; margin: 0; font-size: 24px; letter-spacing: 2px; text-transform: uppercase;">Message Received</h1>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 40px 30px;">
+                          <h2 style="color: #00d2ff; margin-top: 0;">Hello ${name},</h2>
+                          <p style="color: #ccc; line-height: 1.8; font-size: 16px;">
+                            Thank you for reaching out! I've successfully received your inquiry for <strong>${projectName}</strong>.
+                          </p>
+                          
+                          <div style="margin: 30px 0; padding: 20px; border-left: 4px solid #00d2ff; background-color: #050505;">
+                            <p style="margin: 0; color: #00d2ff; font-weight: bold; font-size: 14px; text-transform: uppercase;">Inquiry Summary:</p>
+                            <p style="margin: 10px 0 0 0; color: #eee;"><strong>Service:</strong> ${service}</p>
+                            <p style="margin: 5px 0 0 0; color: #eee;"><strong>Budget:</strong> ${budget}</p>
+                          </div>
+
+                          <p style="color: #ccc; line-height: 1.8; font-size: 16px;">
+                            I'll personally review your project details and get back to you within 24-48 hours via email.
+                          </p>
+
+                          <div style="margin-top: 40px; text-align: center;">
+                            <p style="color: #888; font-style: italic; margin-bottom: 20px;">Stay tuned,</p>
+                            <p style="color: #ffffff; font-weight: bold; font-size: 18px; margin: 0;">Zakaria</p>
+                            <p style="color: #00d2ff; font-size: 14px; margin: 5px 0 0 0;">Designer & Developer</p>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center" style="padding: 20px; background-color: #000; color: #444; font-size: 11px; letter-spacing: 1px;">
+                          <p style="margin: 0;">&copy; 2026 ZAKARIA. ALL RIGHTS RESERVED.</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          `,
+          attachments: [{
+            filename: 'my icon.png',
+            path: path.join(__dirname, 'assets', 'my icon.png'),
+            cid: 'portfolioLogo' 
+          }]
         };
 
         console.log("📨 Sending confirmation email to:", email);
