@@ -111,7 +111,39 @@ app.post('/send-inquiry', inquiryLimiter, async (req, res) => {
         replyTo: email,
         subject: `🚀 New Project Inquiry: ${projectName}`,
         html: `
-          
+          <div style="background-color: #0a0a0a; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; border-radius: 10px;">
+            <div style="text-align: center; border-bottom: 1px solid #333; padding-bottom: 20px;">
+              <h1 style="color: #00d2ff; margin-bottom: 10px;">New Inquiry Received</h1>
+              <p style="color: #888;">You have a new message from your portfolio website.</p>
+            </div>
+            
+            <div style="padding: 20px;">
+              <div style="background: #1a1a1a; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                <h3 style="color: #00d2ff; margin-top: 0;">Client Information</h3>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phoneNum || 'Not provided'}</p>
+              </div>
+
+              <div style="background: #1a1a1a; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                <h3 style="color: #00d2ff; margin-top: 0;">Project Details</h3>
+                <p><strong>Project Name:</strong> ${projectName}</p>
+                <p><strong>Service:</strong> ${service}</p>
+                <p><strong>Budget:</strong> ${budget}</p>
+              </div>
+
+              <div style="background: #1a1a1a; padding: 15px; border-radius: 8px;">
+                <h3 style="color: #00d2ff; margin-top: 0;">Message</h3>
+                <p style="white-space: pre-wrap; line-height: 1.6;">${message}</p>
+              </div>
+            </div>
+
+            <div style="text-align: center; color: #555; font-size: 12px; margin-top: 20px;">
+              <p>Sent from your Portfolio Automated System</p>
+            </div>
+          </div>
+        `
+      };
     
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
