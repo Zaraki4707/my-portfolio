@@ -2,13 +2,40 @@ const express = require('express');
 const path = require('path');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Security Middleware
+app.use(helmet());
+
+// General rate limiting: 100 requests per 15 minutes
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use(generalLimiter);
+
+// Specific rate limiting for the inquiry form: 5 submissions per hour
+const inquiryLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 5,
+  message: "Too many inquiry attempts, please try again later.",
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 // Middleware
-app.use(cors());
+const corsOptions = {
+    origin: process.env.ALLOWED_ORIGIN || '*', 
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -37,9 +64,9 @@ app.get('/index.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.post('/send-inquiry', (req, res) => {
+app.post('/send-inquiry', inquiryLimiter, (req, res) => {
     const { name, email, phoneNum, service, projectName, budget, message } = req.body;
-  
+
     // Send Email
     const mailOptions = {
       from: process.env.EMAIL_USER,
@@ -54,7 +81,21 @@ app.post('/send-inquiry', (req, res) => {
         console.log(error);
         return res.status(500).send("Error sending email");
       }
-      res.status(200).send("Success");
+
+      // Automatically send confirmation email to the client
+      const confirmationOptions = {
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: "Message Received - Portfolio Inquiry",
+        text: `Hi ${name},\n\nThank you for reaching out! I've received your request regarding "${projectName}".\n\nI'll be responding to your inquiry soon. If you don't hear from me within 24-48 hours, please feel free to reach out again.\n\nBest regards,\nYour Portfolio Team`
+      };
+
+      transporter.sendMail(confirmationOptions, (confError, confInfo) => {
+        if (confError) {
+          console.log("Error sending confirmation email:", confError);
+        }
+        res.status(200).send("Success");
+      });
     });
 });
 
