@@ -9,8 +9,10 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Security Middleware
-app.use(helmet());
+// Security Middleware - Relaxed CSP for development and inline scripts
+app.use(helmet({
+  contentSecurityPolicy: false,
+}));
 
 // General rate limiting: 100 requests per 15 minutes
 const generalLimiter = rateLimit({
@@ -21,10 +23,10 @@ const generalLimiter = rateLimit({
 });
 app.use(generalLimiter);
 
-// Specific rate limiting for the inquiry form: 5 submissions per hour
+// Specific rate limiting for the inquiry form: 50 submissions per hour (Increased for testing)
 const inquiryLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
-  max: 5,
+  max: 50,
   message: "Too many inquiry attempts, please try again later.",
   standardHeaders: true,
   legacyHeaders: false,
@@ -65,6 +67,7 @@ app.get('/index.html', (req, res) => {
 });
 
 app.post('/send-inquiry', inquiryLimiter, (req, res) => {
+    console.log("📩 Received inquiry request:", req.body);
     const { name, email, phoneNum, service, projectName, budget, message } = req.body;
 
     // Send Email
@@ -78,9 +81,10 @@ app.post('/send-inquiry', inquiryLimiter, (req, res) => {
   
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.log(error);
+        console.error("❌ Error sending owner email:", error);
         return res.status(500).send("Error sending email");
       }
+      console.log("✅ Owner email sent:", info.response);
 
       // Automatically send confirmation email to the client
       const confirmationOptions = {
@@ -90,9 +94,13 @@ app.post('/send-inquiry', inquiryLimiter, (req, res) => {
         text: `Hi ${name},\n\nThank you for reaching out! I've received your request regarding "${projectName}".\n\nI'll be responding to your inquiry soon. If you don't hear from me within 24-48 hours, please feel free to reach out again.\n\nBest regards,\nYour Portfolio Team`
       };
 
+      console.log("📨 Sending confirmation email to:", email);
       transporter.sendMail(confirmationOptions, (confError, confInfo) => {
         if (confError) {
-          console.log("Error sending confirmation email:", confError);
+          console.error("⚠️ Error sending confirmation email:", confError);
+          // Still send success to user even if confirmation fails
+        } else {
+          console.log("✅ Confirmation email sent:", confInfo.response);
         }
         res.status(200).send("Success");
       });
