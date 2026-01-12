@@ -183,9 +183,11 @@
         }
 
         // Button click handler
-        function handleClick() {
-            // Add click animation
-            const button = document.querySelector('button');
+        function handleClick(event) {
+            // Use the clicked element or event target
+            const button = event ? event.currentTarget : document.querySelector('.content button');
+            if (!button) return;
+            
             button.style.transform = 'scale(0.95)';
             
             // Create ripple effect
@@ -202,7 +204,6 @@
             
             button.appendChild(ripple);
             
-            // Animate ripple
             ripple.animate([
                 { width: '0px', height: '0px' },
                 { width: '200px', height: '200px', opacity: 0 }

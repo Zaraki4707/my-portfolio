@@ -9,12 +9,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background: #0a0a0a; /* Match first section */
-    overflow: hidden; /* Prevent scrolling */
+    overflow-x: hidden;
+    overflow-y: auto;
     perspective: 1000px;
     color: #fff;
-    padding: 0;
+    padding: 20px 0;
     margin: 0;
 }
 
@@ -374,7 +375,7 @@ select.input-field option {
     position: fixed;
     top: 2rem;
     left: 2rem;
-    z-index: 1100;
+    z-index: 1300;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);

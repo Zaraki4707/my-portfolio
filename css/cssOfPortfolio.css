@@ -21,7 +21,7 @@
 
         /* Class to disable scrolling on specific pages */
         body.no-scroll {
-            height: 100vh;
+            min-height: 100vh;
             overflow: hidden;
             justify-content: center;
         }
@@ -352,7 +352,7 @@
             position: fixed;
             top: 1.5rem;
             right: 1.5rem;
-            z-index: 1100;
+            z-index: 1300;
             background: rgba(102, 126, 234, 0.9);
             border: none;
             border-radius: 8px;
@@ -404,11 +404,14 @@
             background: rgba(0, 0, 0, 0.7);
             z-index: 1150;
             opacity: 0;
+            pointer-events: none;
             transition: opacity 0.3s ease;
         }
 
         .mobile-menu-overlay.active {
+            display: block;
             opacity: 1;
+            pointer-events: auto;
         }
 
         /* Mobile Menu */
@@ -457,7 +460,7 @@
             position: fixed;
             top: 2rem;
             left: 2rem;
-            z-index: 1100;
+            z-index: 1300;
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
