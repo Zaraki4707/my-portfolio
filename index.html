@@ -5,16 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zakaria MEKKI-Ai student portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./cssOfPortfolio.css">
+    <link rel="stylesheet" href="./css/cssOfPortfolio.css">
     <link rel="icon" href="./assets/my icon.png">
 
 </head>
 <body>
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu">
+        <a href="./pages/projects.html">Projects</a>
+        <a href="./pages/about.html">About</a>
+        <a href="./pages/contact.html">Contact</a>
+        <a href="https://github.com/Zaraki4707" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+
     <div class="content">
         <div class="portfolio-links">
-            <a href="./projects.html">Projects</a>
-            <a href="./about.html">About</a>
-            <a href="./contact.html">Contact</a>
+            <a href="./pages/projects.html">Projects</a>
+            <a href="./pages/about.html">About</a>
+            <a href="./pages/contact.html">Contact</a>
             <a href="https://github.com/Zaraki4707" target="_blank" rel="noopener">GitHub</a>
         </div>
         <h1 style="text-align: center;">Welcome to <b>Zakaria</b>'s Portfolio</h1>
@@ -36,11 +54,11 @@
                 <p style="text-align: center;">Still is preparatory cycle, having a good base for upcoming studies</p>
             </div>
         </div>
-        <a href="./Clientinfo.html">
+        <a href="./pages/Clientinfo.html">
         <button onclick="handleClick()" >Let's build something interesting</button>
         </a>
     </div>
-<script src="./script.js"></script>
+<script src="./js/script.js"></script>
     
 </body>
 </html>
