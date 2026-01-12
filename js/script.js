@@ -289,3 +289,24 @@ window.addEventListener('resize', () => {
     // Re-initialize
     setTimeout(initScrollAnimations, 100);
 });
+
+// --- Sticky Navbar Blur Effect ---
+function initStickyNavbar() {
+    const navbar = document.querySelector('.portfolio-links');
+    if (!navbar) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Run once on load in case page is already scrolled
+    if (window.scrollY > 20) {
+        navbar.classList.add('scrolled');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', initStickyNavbar);

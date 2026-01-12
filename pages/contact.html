@@ -6,9 +6,13 @@
     <title>My contacts</title>
     <link rel="icon" href="../assets/my icon.png">
     <link rel="stylesheet" href="../css/cssOfPortfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+    <!-- Background Glow Effect for Contact Page -->
+    <div class="contact-bg-glow"></div>
+
     <!-- Back Button -->
     <button class="back-button" aria-label="Go back">&larr;</button>
 
@@ -31,27 +35,46 @@
         <a href="https://github.com/Zaraki4707" target="_blank" rel="noopener">GitHub</a>
     </nav>
     
-<div class="content"> 
-           <div class="portfolio-links">
-            <a href="../index.html">Home</a>
-            <a href="./projects.html">Projects</a>
-            <a href="./about.html">About</a>
-            <a href="./contact.html">Contact</a>
-            <a href="https://github.com/Zaraki4707" target="_blank" rel="noopener">GitHub</a>
-        </div> 
-    <div class="portfolio-links" style="display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;">             
-        <a href="https://www.facebook.com/zaraki.mekki77" target="_blank" rel="noopener">Facebook</a>             
-        <a href="https://www.linkedin.com/in/zakaria-abdenour-mekki" target="_blank" rel="noopener">LinkedIn</a>             
-        <a href="https://www.instagram.com/zakaria._.mekki?igsh=MTB1bG1md3JzY2U3Ng==" target="_blank" rel="noopener">Instagram</a>  
-        <a href="https://t.me/zaraki_mk" target="_blank" rel="noopener">Telegram</a>             
-        <a href="https://github.com/Zaraki4707" target="_blank" rel="noopener">GitHub</a>   
-        <a>zakaria.pro.services@gmail.com</a>      
-        
+    <!-- Global Sticky Navbar -->
+    <div class="portfolio-links">
+        <a href="../index.html">Home</a>
+        <a href="./projects.html">Projects</a>
+        <a href="./about.html">About</a>
+        <a href="./contact.html">Contact</a>
+        <a href="https://github.com/Zaraki4707" target="_blank" rel="noopener">GitHub</a>
     </div>
+
+<div class="content"> 
+    <h1 style="text-align: center;">Get in Touch</h1>
+    <p style="text-align: center; color: rgba(255,255,255,0.7); margin-bottom: 3rem;">I'm always open to new opportunities and collaborations.</p>
+    
+    <div class="contact-grid">             
+        <a href="https://www.facebook.com/zaraki.mekki77" target="_blank" rel="noopener" class="contact-card">
+            <i class="fab fa-facebook-f"></i>
+            <span>Facebook</span>
+        </a>             
+        <a href="https://www.linkedin.com/in/zakaria-abdenour-mekki" target="_blank" rel="noopener" class="contact-card">
+            <i class="fab fa-linkedin-in"></i>
+            <span>LinkedIn</span>
+        </a>             
+        <a href="https://www.instagram.com/zakaria._.mekki?igsh=MTB1bG1md3JzY2U3Ng==" target="_blank" rel="noopener" class="contact-card">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+        </a>  
+        <a href="https://t.me/zaraki_mk" target="_blank" rel="noopener" class="contact-card">
+            <i class="fab fa-telegram-plane"></i>
+            <span>Telegram</span>
+        </a>             
+        <a href="https://github.com/Zaraki4707" target="_blank" rel="noopener" class="contact-card">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+        </a>   
+        <a href="mailto:zakaria.pro.services@gmail.com" class="contact-card email-card" style="position: relative; z-index: 20;">
+            <i class="fas fa-envelope"></i>
+            <span style="pointer-events: none;">zakaria.pro.services@gmail.com</span>
+        </a>      
+    </div>
+</div>
     <script src="../js/script.js"></script>
 
 </body>
